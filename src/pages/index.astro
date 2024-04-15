@@ -1,0 +1,83 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Hero from '~/components/widgets/HeroCustom.astro';
+import Note from '~/components/widgets/Note.astro';
+import Features from '~/components/widgets/Features.astro';
+import Steps from '~/components/widgets/Steps.astro';
+
+const metadata = {
+  title: 'Kōgei Studio',
+  ignoreTitleTemplate: true,
+};
+---
+
+<Layout metadata={metadata}>
+  <Hero image={{ src: '~/assets/images/focus.jpg', alt: 'Kogei' }}>
+  </Hero>
+
+  <Note />
+
+  <Features
+    id="features"
+    tagline="Services"
+    title="How we help you succeed"
+    items={[
+      {
+        title: 'Web Development',
+        description:
+          'Design and build custom websites that are sleek, user-friendly, and optimized for success. Using the latest technologies and best practices to deliver high-quality, user-friendly websites that drive results.',
+        icon: 'tabler:timeline',
+      },
+      {
+        title: 'Backend and API Development',
+        description:
+          'Robust, scalable, and efficient backend solutions tailored to meet your specific business needs. We handle the technical complexities, allowing you to focus on growing your business.',
+        icon: 'tabler:settings-2',
+      },
+      {
+        title: 'Data Engineering',
+        description:
+          'Building scalable data pipelines, optimizing data workflows, and implementing advanced analytics solutions. Turn your raw data into actionable insights',
+        icon: 'tabler:chart-grid-dots',
+      },
+      {
+        title: 'Web Accessibility',
+        description:
+          "Training, Assessing, auditing, and enhancing the accessibility of your digital assets to ensure they are usable by all individuals, regardless of ability.",
+        icon: 'tabler:accessible',
+      },
+    ]}
+  />
+
+  <Steps
+    title="Make your vision a reality."
+    items={[
+      {
+        title: 'Step 1: <span class="font-medium">Tells us your vision</span>',
+        description:
+        "This step is all about you – telling us your vision. Share your ideas, goals, and aspirations with us, and let's turn your vision into reality. Together, let's create something remarkable.",
+        icon: 'tabler:telescope',
+      },
+      {
+        title: 'Step 2: <span class="font-medium">Discuss details</em>',
+        description:"We ensure that your requirements, preferences, objectives and expectations are well understood so that our solutions are precisely tailored to meet and exceed your expectations.",
+        icon: 'tabler:letter-case',
+      },
+      {
+        title: 'Step 3: <span class="font-medium">Delivery</span>',
+        description:
+          "This is where your idea meets the real world. But you won't be alone! We'll provide support, expertise, and dedication to ensure your project's success.",
+        icon: 'tabler:packages',
+      },
+      {
+        title: 'Ready!',
+        icon: 'tabler:rocket',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
+      alt: 'Steps image',
+    }}
+  />
+</Layout>

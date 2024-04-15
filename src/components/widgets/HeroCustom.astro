@@ -1,0 +1,61 @@
+---
+import Image from '~/components/common/Image.astro';
+import Button from '~/components/ui/Button.astro';
+import type { CallToAction } from '~/types';
+
+export interface Props {
+  id?: string;
+  title?: string;
+  subtitle?: string;
+  tagline?: string;
+  content?: string;
+  actions?: string | CallToAction[];
+  image?: string | any; // TODO: find HTMLElementProps
+}
+
+const {
+  id,
+  title = await Astro.slots.render('title'),
+  subtitle = await Astro.slots.render('subtitle'),
+  tagline,
+  content = await Astro.slots.render('content'),
+  actions = await Astro.slots.render('actions'),
+  image = await Astro.slots.render('image'),
+} = Astro.props;
+---
+
+<section class="relative md:-mt-[76px] not-prose" {...id ? { id } : {}}>
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 h-110vh">
+    <div class="pt-0 md:pt-[76px] pointer-events-none"></div>
+    <div class="relative">
+      <div class="absolute z-10 inset-y-0 inset-x-0 flex items-center">
+        <span class="text-8xl font-bold drop-shadow-xl">
+          Empowering your ideas
+        </span>
+        </div>
+      <div>
+        {
+          image && (
+            <div 
+            class="relative m-auto max-w-full">
+              {typeof image === 'string' ? (
+                <Fragment set:html={image} />
+              ) : (
+                <Image
+                  class="mx-auto w-full h-screen"
+                  widths={[400, 1768, 1624, 2040]}
+                  sizes="(max-width: 767px) 400px, (max-width: 1023px) 1768px, (max-width: 2039px) 1624px, 2040px"
+                  loading="eager"
+                  width={1624}
+                  height={736}
+                  {...image}
+                />
+              )}
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</section>
